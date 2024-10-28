@@ -1,22 +1,38 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
 }
 
 .container {
     /* overflow: hidden; */
-    width: 100vw;
+    /* width: 100vw; */
+    width: max-content;
     height: 100vh;
-    background-color: rgb(17, 17, 17);
+    /* background-color: rgb(17, 17, 17); */
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    background-image: url('../img/f.gif');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 img {
-    width: 20rem;
+    width: 12vw;
     transition: all .3s ease-in-out;
     /* pointer-events: none; */
-    border: 2px red solid;
+    /* border: 2px red solid; */
+    /* box-shadow: 2px 2px 2px 2px rgb(3, 115, 134); */
     border-radius: 50%;
+}
+
+img:nth-child(1) {
+    width: 30vw;
+
 }
 
 /* img:hover {
@@ -30,5 +46,8 @@ img {
 }
 
 .powiekszenie {
-    scale: 1.4;
+    scale: 2;
 }
+
+.hidden
+
