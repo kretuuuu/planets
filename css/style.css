@@ -8,11 +8,13 @@ html {
 }
 
 body {
+  overflow-y: hidden;
   margin: 0;
-  background-color: rgb(59, 56, 56);
+  /* background-color: rgb(59, 56, 56); */
 }
 
 .main {
+  display: flex;
   background-image: url("../img/f.gif");
   background-position: center;
   background-size: cover;
@@ -28,25 +30,41 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* background-image: url("../img/f.gif");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; */
   transition: all 0.3s ease;
 }
+
+.content {
+  overflow: hidden;
+  width: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  flex-direction: column;
+  color: red;
+  text-wrap: nowrap;
+}
+
+.content.on-top {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.459);
+  /* opacity: 50%; */
+}
+
 .planets {
   width: var(--width-planet);
-  transition: all 1s ease;
+  transition: all .6s ease;
   border-radius: 50%;
 }
+
+/* ZROBIC SCALE REALNA PLANET EWENTUALNY NAPIS NA PLANECIE NA HOVERZE*/
 
 .planets:nth-child(1) {
   width: var(--width-sun);
 }
 
 .planets.on-top {
-  /* transform: translateX(calc((100vw - (var(--width-planet)*3)) / 2)); */
   width: calc(var(--width-planet) * 3);
 }
 
@@ -57,16 +75,14 @@ body {
 .planets.hidden {
   width: 0;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-}
-
-.main.on-top {
-  /* width: 100%; */
-
 }
 
 .container.on-top {
   /* overflow: hidden; */
-  background-attachment: local;
   justify-content: flex-start;
+}
+
+.main.on-top {
 }

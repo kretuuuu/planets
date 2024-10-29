@@ -1,5 +1,6 @@
 const container = document.querySelector(".container"); 
 const mn = document.querySelector(".main");
+const content = document.querySelector(".content")
 let planet_list = new Array();
 let shows;
 
@@ -14,6 +15,7 @@ const onTop = function() {
   this.classList.toggle("on-top");
   container.classList.toggle("on-top");
   mn.classList.toggle("on-top");
+  content.classList.toggle("on-top");
   shows = this;
   planet_list.forEach(element => {
     if(element.planetElement!=shows)
@@ -47,11 +49,5 @@ const main = () => {
     })
     .catch((error) => console.error("[ERROR] ", error));
 };
-
-// window.onclick = function close(event) {
-//   if (event.target != shows) {
-//     shows.classList.remove("on-top");
-//   }
-// };
 
 main();
