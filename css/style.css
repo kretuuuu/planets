@@ -1,53 +1,72 @@
+:root {
+  --width-planet: 14vw;
+  --width-sun: 34vw;
+}
+
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  background-color: rgb(59, 56, 56);
+}
+
+.main {
+  background-image: url("../img/f.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: max-content;
+  min-width: 100%;
+  background-attachment: fixed;
 }
 
 .container {
-    /* overflow: hidden; */
-    /* width: 100vw; */
-    width: max-content;
-    height: 100vh;
-    /* background-color: rgb(17, 17, 17); */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-image: url('../img/f.gif');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  width: max-content;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background-image: url("../img/f.gif");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+  transition: all 0.3s ease;
 }
-img {
-    width: 12vw;
-    transition: all .3s ease-in-out;
-    /* pointer-events: none; */
-    /* border: 2px red solid; */
-    /* box-shadow: 2px 2px 2px 2px rgb(3, 115, 134); */
-    border-radius: 50%;
+.planets {
+  width: var(--width-planet);
+  transition: all 1s ease;
+  border-radius: 50%;
 }
 
-img:nth-child(1) {
-    width: 30vw;
+.planets:nth-child(1) {
+  width: var(--width-sun);
+}
+
+.planets.on-top {
+  /* transform: translateX(calc((100vw - (var(--width-planet)*3)) / 2)); */
+  width: calc(var(--width-planet) * 3);
+}
+
+.planets:nth-child(1).on-top {
+  width: calc(var(--width-sun) * 1.5);
+}
+
+.planets.hidden {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.main.on-top {
+  /* width: 100%; */
 
 }
 
-/* img:hover {
-    scale: 2;
-} */
-
-.testowe {
-    height: 100px;
-    width: 100px;
-    background-color: beige;
+.container.on-top {
+  /* overflow: hidden; */
+  background-attachment: local;
+  justify-content: flex-start;
 }
-
-.powiekszenie {
-    scale: 2;
-}
-
-.hidden
-
