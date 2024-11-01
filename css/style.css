@@ -1,6 +1,15 @@
 :root {
-  --width-planet: 14vw;
+  --width-planet: 10vw;
   --width-sun: 34vw;
+
+  --width-mercury: 5vw;
+  --width-venus: 8vw;
+  --width-earth: 8.5vw;
+  --width-mars: 6vw;
+  --width-jupiter: 20vw;
+  --width-saturn: 17vw;
+  --width-uranus: 12vw;
+  --width-neptune: 12vw;
 }
 
 html {
@@ -8,9 +17,8 @@ html {
 }
 
 body {
-  overflow-y: hidden;
   margin: 0;
-  /* background-color: rgb(59, 56, 56); */
+  background-color: rgb(59, 56, 56);
 }
 
 .main {
@@ -26,41 +34,158 @@ body {
 
 .container {
   width: max-content;
+  column-gap: 6rem;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease-out;
 }
 
 .content {
   overflow: hidden;
-  width: 0;
+  width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  transition: all 0.3s ease;
   flex-direction: column;
-  color: red;
   text-wrap: nowrap;
+  padding: 3rem;
+  display: none;
+  transition: all 0.3s ease-out 0.6s;
 }
 
+.content-title {
+  opacity: 0;
+  color: white;
+  text-transform: uppercase;
+}
+
+.content-title.on-top {
+  animation: text-show 1s 1s alternate forwards;
+}
+
+.info-line {
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.986),
+    rgba(253, 253, 253, 0.535),
+    rgba(0, 0, 0, 0)
+  );
+  border: 0;
+}
+
+.info-line.on-top {
+  animation: line-right 0.8s 0.8s alternate forwards;
+}
+
+.content-element {
+  /* width: 0; */
+  visibility: hidden;
+  /* opacity: 0; */
+  color: white;
+  max-width: 60%;
+  text-wrap: wrap;
+  text-align: center;
+}
+
+.content-element.on-top {
+  animation-name: text-show;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+.position {
+  animation-delay: 1.5s;
+}
+
+.diameter {
+  animation-delay: 2s;
+}
+
+.mass {
+  animation-delay: 2.5s;
+}
+
+@keyframes line-right {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes text-show {
+  from {
+    opacity: 0;
+    visibility: none;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes planetsOnLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .content.on-top {
-  width: 100%;
   background-color: rgba(0, 0, 0, 0.459);
-  /* opacity: 50%; */
+  display: flex;
 }
 
 .planets {
+  opacity: 0;
   width: var(--width-planet);
-  transition: all .6s ease;
+  transition: all 0.5s ease;
   border-radius: 50%;
+  animation: planetsOnLoad .5s .2s alternate forwards 
+}
+
+.mercury {
+  width: var(--width-mercury);
+}
+
+.venus {
+  width: var(--width-venus);
+}
+
+.earth {
+  width: var(--width-earth);
+}
+
+.mars {
+  width: var(--width-mars);
+}
+
+.jupiter {
+  width: var(--width-jupiter);
+}
+
+.saturn {
+  width: var(--width-saturn);
+}
+
+.uranus {
+  width: var(--width-uranus);
+}
+
+.neptune {
+  width: var(--width-neptune);
 }
 
 /* ZROBIC SCALE REALNA PLANET EWENTUALNY NAPIS NA PLANECIE NA HOVERZE*/
 
-.planets:nth-child(1) {
+.sun {
   width: var(--width-sun);
 }
 
@@ -68,21 +193,22 @@ body {
   width: calc(var(--width-planet) * 3);
 }
 
-.planets:nth-child(1).on-top {
-  width: calc(var(--width-sun) * 1.5);
+.sun.on-top {
+  width: calc(var(--width-sun) * 1.2);
 }
 
 .planets.hidden {
   width: 0;
   opacity: 0;
-  visibility: hidden;
+  /* visibility: hidden; */
   pointer-events: none;
 }
 
 .container.on-top {
   /* overflow: hidden; */
-  justify-content: flex-start;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  column-gap: 0;
+  /* justify-content: flex-start; */
 }
 
-.main.on-top {
-}

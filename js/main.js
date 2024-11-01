@@ -1,32 +1,66 @@
-const container = document.querySelector(".container"); 
+const container = document.querySelector(".container");
 const mn = document.querySelector(".main");
-const content = document.querySelector(".content")
+const content = document.querySelector(".content");
+
 let planet_list = new Array();
 let shows;
 
-function setAttributes(el, attrs) {
+const setAttributes = (el, attrs) => {
   for (var key in attrs) {
     el.setAttribute(key, attrs[key]);
   }
-}
+};
 
-const onTop = function() {
-  console.log(this.getBoundingClientRect())
-  this.classList.toggle("on-top");
-  container.classList.toggle("on-top");
-  mn.classList.toggle("on-top");
-  content.classList.toggle("on-top");
+const toggleClass = (arr, cls) => {
+  arr.forEach((element) => {
+    element.classList.toggle(cls);
+  });
+};
+
+const generateInfo = () => {
+  const findPlanetInfo = planet_list.find(
+    (element) => element.planetElement == shows
+  );
+  // const title = document.querySelector(".content-title");
+  // const position = document.querySelector(".position");
+  // const diameter = document.querySelector(".diameter");
+  // const mass = document.querySelector(".mass");
+  // const distSun = document.querySelector(".dist-sun");
+  const contentEl = {
+    title: document.querySelector(".content-title"),
+    position: document.querySelector(".position"),
+    diameter: document.querySelector(".diameter"),
+    mass: document.querySelector(".mass"),
+    distSun: document.querySelector(".dist-sun"),
+    period: document.querySelector(".period"),
+    dayLen: document.querySelector(".day-len"),
+    atmosphere: document.querySelector(".atmosphere"),
+    temperature: document.querySelector(".temperature"),
+    moons: document.querySelector(".moons"),
+    fanFucts: document.querySelector(".fun-facts")
+  };
+
+  contentEl.title.innerHTML = findPlanetInfo.name;
+  contentEl.position.innerHTML = findPlanetInfo.position;
+  contentEl.diameter.innerHTML = findPlanetInfo.diameter;
+  contentEl.mass.innerHTML = findPlanetInfo.mass;
+
+  const infoLines = document.querySelectorAll(".info-line");
+  toggleClass([...infoLines, contentEl.title, contentEl.position, contentEl.diameter, contentEl.mass], "on-top");
+};
+
+const onTop = function () {
   shows = this;
-  planet_list.forEach(element => {
-    if(element.planetElement!=shows)
-    {
+  generateInfo();
+  toggleClass([this, container, mn, content], "on-top");
+  // toggleClass(infoLines, "on-top");
+  planet_list.forEach((element) => {
+    if (element.planetElement != shows) {
       // console.error(element)
       element.planetElement.classList.toggle("hidden");
     }
   });
 };
-
-
 
 const main = () => {
   fetch("http://localhost/api_planets/")
@@ -41,6 +75,8 @@ const main = () => {
           role: "button",
         });
         planImg.classList.add("planets");
+        planImg.classList.add(element.name);
+
         element.planetElement = planImg;
         container.appendChild(planImg);
         planImg.addEventListener("click", onTop);
