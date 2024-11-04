@@ -12,15 +12,6 @@
   --width-neptune: 12vw;
 }
 
-@keyframes arrows {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes line-right {
   from {
     width: 0;
@@ -34,10 +25,14 @@
   from {
     opacity: 0;
     visibility: none;
+    filter: blur(5px);
+    scale: 1.2;
   }
   to {
     opacity: 1;
     visibility: visible;
+    filter: blur(0);
+    scale: 1;
   }
 }
 
@@ -56,14 +51,15 @@
   }
   to {
     opacity: 1;
-    backdrop-filter: blur(5px);
-
+    backdrop-filter: blur(3px);
   }
 }
 
-@keyframes hide-content {
-  
-  
+@keyframes text-title {
+
+  to {
+    letter-spacing: 0;
+  }
 }
 
 html {
@@ -73,7 +69,7 @@ html {
 body {
   margin: 0;
   background-color: rgb(59, 56, 56);
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .main {
@@ -121,8 +117,6 @@ body {
   display: none;
   transition: display 0s ease-out 1s;
   opacity: 0;
-  /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0)); */
-  /* backdrop-filter: blur(7px); */
 }
 
 .content.on-top {
@@ -131,14 +125,15 @@ body {
 }
 
 .content-title {
-  /* width: 100%; */
-  opacity: 0;
+    letter-spacing: 8px;
+    /* width: 100%; */
+  opacity: 1;
   color: white;
   text-transform: uppercase;
 }
 
 .content-title.on-top {
-  animation: text-show 1s 1s alternate forwards;
+  animation: text-title 1s 1s alternate forwards;
 }
 
 .content-element {
@@ -168,6 +163,7 @@ body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin: 1.5rem;
 }
 
 .info-line {
@@ -187,28 +183,29 @@ body {
 
 /* DELAY ANIMACJI NAPISOW */
 
-.position {
-  animation-delay: 1.5s;
-}
-
+.position,
 .diameter {
-  animation-delay: 1.8s;
+  animation-delay: 1.3s;
 }
 
-.mass {
-  animation-delay: 2s;
-}
-
+.mass,
 .dist-sun {
-  animation-delay: 2.3s;
+  animation-delay: 1.6s;
 }
 
-.period {
-  animation-delay: 2.6s;
-}
-
+.period,
 .day-len {
-  animation-delay: 2.8s;
+  animation-delay: 1.9s;
+}
+
+.atmosphere,
+.temperature {
+  animation-delay: 2.2s;
+}
+
+.moons,
+.fun-facts {
+  animation-delay: 2.5s;
 }
 
 /* PLANETY KLASY */
