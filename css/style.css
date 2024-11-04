@@ -12,6 +12,41 @@
   --width-neptune: 12vw;
 }
 
+@keyframes arrows {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+@keyframes line-right {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes text-show {
+  from {
+    opacity: 0;
+    visibility: none;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes planetsOnLoad {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -19,6 +54,7 @@ html {
 body {
   margin: 0;
   background-color: rgb(59, 56, 56);
+  overflow-y: hidden;
 }
 
 .main {
@@ -54,6 +90,8 @@ body {
   padding: 3rem;
   display: none;
   transition: all 0.3s ease-out 0.6s;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0));
+  /* backdrop-filter: blur(7px); */
 }
 
 .content-title {
@@ -66,29 +104,21 @@ body {
   animation: text-show 1s 1s alternate forwards;
 }
 
-.info-line {
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.986),
-    rgba(253, 253, 253, 0.535),
-    rgba(0, 0, 0, 0)
-  );
-  border: 0;
-}
-
-.info-line.on-top {
-  animation: line-right 0.8s 0.8s alternate forwards;
-}
-
 .content-element {
-  /* width: 0; */
+  width: 50%;
+  user-select: none;
   visibility: hidden;
-  /* opacity: 0; */
   color: white;
-  max-width: 60%;
   text-wrap: wrap;
-  text-align: center;
+  text-align: left;
+  filter: brightness(60%);
+  transition: all .3s ease;
+}
+
+.content-element:hover {
+  /* text-decoration: underline; */
+  filter: brightness(100%);
+
 }
 
 .content-element.on-top {
@@ -98,48 +128,67 @@ body {
   animation-fill-mode: forwards;
 }
 
+.info-line {
+  height: 1px;
+  background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.986),
+    rgba(253, 253, 253, 0.535),
+    rgba(0, 0, 0, 0)
+  );
+  border: 0;
+}
+
+.info-line.on-top {
+  animation: line-right 0.8s 0.8s normal forwards;
+}
+
+/* DELAY ANIMACJI NAPISOW */
+
 .position {
   animation-delay: 1.5s;
 }
 
 .diameter {
-  animation-delay: 2s;
+  animation-delay: 1.8s;
 }
 
 .mass {
-  animation-delay: 2.5s;
+  animation-delay: 2s;
 }
 
-@keyframes line-right {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.dist-sun {
+  animation-delay: 2.3s;
 }
 
-@keyframes text-show {
-  from {
-    opacity: 0;
-    visibility: none;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
+.period {
+  animation-delay: 2.6s;
 }
 
-@keyframes planetsOnLoad {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.day-len {
+  animation-delay: 2.8s;
 }
+
+.nav-arrows {
+  width: 100%;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 2rem 0;
+}
+
+.nav-arrows.on-top {
+  animation: arrows 0.8s 0.8s alternate forwards;  
+}
+
+.arrows {
+  cursor: pointer;
+}
+
+
 .content.on-top {
-  background-color: rgba(0, 0, 0, 0.459);
+  /* background-color: rgba(0, 0, 0, 0.459); */
   display: flex;
 }
 
@@ -150,6 +199,8 @@ body {
   border-radius: 50%;
   animation: planetsOnLoad .5s .2s alternate forwards 
 }
+
+/* SZEROKOSCI PLANET */
 
 .mercury {
   width: var(--width-mercury);
@@ -183,8 +234,6 @@ body {
   width: var(--width-neptune);
 }
 
-/* ZROBIC SCALE REALNA PLANET EWENTUALNY NAPIS NA PLANECIE NA HOVERZE*/
-
 .sun {
   width: var(--width-sun);
 }
@@ -200,15 +249,11 @@ body {
 .planets.hidden {
   width: 0;
   opacity: 0;
-  /* visibility: hidden; */
   pointer-events: none;
 }
 
 .container.on-top {
-  /* overflow: hidden; */
   padding-left: 4rem;
   padding-right: 4rem;
   column-gap: 0;
-  /* justify-content: flex-start; */
 }
-
