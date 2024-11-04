@@ -1,7 +1,6 @@
 const container = document.querySelector(".container");
 const mn = document.querySelector(".main");
 const content = document.querySelector(".content");
-const arrows = document.querySelector(".nav-arrows");
 
 let planet_list = new Array();
 let shows;
@@ -22,11 +21,6 @@ const generateInfo = () => {
   const findPlanetInfo = planet_list.find(
     (element) => element.planetElement == shows
   );
-  // const title = document.querySelector(".content-title");
-  // const position = document.querySelector(".position");
-  // const diameter = document.querySelector(".diameter");
-  // const mass = document.querySelector(".mass");
-  // const distSun = document.querySelector(".dist-sun");
   const contentEl = {
     title: document.querySelector(".content-title"),
     position: document.querySelector(".position"),
@@ -35,10 +29,10 @@ const generateInfo = () => {
     distSun: document.querySelector(".dist-sun"),
     period: document.querySelector(".period"),
     dayLen: document.querySelector(".day-len"),
-    // atmosphere: document.querySelector(".atmosphere"),
-    // temperature: document.querySelector(".temperature"),
-    // moons: document.querySelector(".moons"),
-    // fanFucts: document.querySelector(".fun-facts")
+    atmosphere: document.querySelector(".atmosphere"),
+    temperature: document.querySelector(".temperature"),
+    moons: document.querySelector(".moons"),
+    funFacts: document.querySelector(".fun-facts")
   };
 
   contentEl.title.innerHTML = findPlanetInfo.name;
@@ -48,9 +42,13 @@ const generateInfo = () => {
   contentEl.distSun.innerHTML = "Distance from sun: "+findPlanetInfo.distance_from_sun;
   contentEl.period.innerHTML = "Orbital period: "+findPlanetInfo.orbital_period;
   contentEl.dayLen.innerHTML = "Day length: "+findPlanetInfo.day_len;
+  contentEl.atmosphere.innerHTML = "Atmosphere: "+findPlanetInfo.atmosphere;
+  contentEl.temperature.innerHTML = "Temperature: "+findPlanetInfo.temperature;
+  contentEl.moons.innerHTML = "Moons: "+findPlanetInfo.moons;
+  contentEl.funFacts.innerHTML = "Fun facts: "+findPlanetInfo.fun_facts;
 
   const infoLines = document.querySelectorAll(".info-line");
-  toggleClass([...infoLines, contentEl.title, contentEl.position, contentEl.diameter, contentEl.mass, contentEl.distSun, contentEl.period, contentEl.dayLen,arrows], "on-top");
+  toggleClass([...infoLines, contentEl.title, contentEl.position, contentEl.diameter, contentEl.mass, contentEl.distSun, contentEl.period, contentEl.dayLen, contentEl.atmosphere, contentEl.temperature, contentEl.moons, contentEl.funFacts], "on-top");
 };
 
 const onTop = function () {
