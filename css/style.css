@@ -69,7 +69,7 @@ html {
 body {
   margin: 0;
   background-color: rgb(59, 56, 56);
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .main {
