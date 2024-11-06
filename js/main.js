@@ -106,7 +106,7 @@ const main = () => {
             alt: element.id
           });
           planImg.setAttribute("auto-rotate", true);
-          // planImg.setAttribute("camera-controls", true);
+          planImg.setAttribute("camera-controls", true);
           planImg.classList.add("planets");
           planImg.classList.add(element.id);
 

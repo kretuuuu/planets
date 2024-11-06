@@ -8,9 +8,23 @@
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
+    <style>
+        body {
+            height: 100vh;
+        }
+      model-viewer {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    <model-viewer src="./earth.glb" alt="3D model" auto-rotate ar></model-viewer>
-
+    <model-viewer
+      src="./earth.glb"
+      alt="3D model"
+      auto-rotate
+      ar
+      camera-controls
+    ></model-viewer>
   </body>
 </html>
