@@ -1,10 +1,17 @@
 const container = document.querySelector(".container");
 const mn = document.querySelector(".main");
 const content = document.querySelector(".content");
-
+const radioLangs = document.querySelectorAll(".lang");
 let planet_list = new Array();
-let language = "PL";
+let language = "ENG";
 let shows;
+
+// radioLangs.forEach((element) => {
+//   element.addEventListener("click", function changeLang() {
+//     language = "ENG";
+//     generateInfo();
+//   });
+// });
 
 const setAttributes = (el, attrs) => {
   for (var key in attrs) {
@@ -14,14 +21,16 @@ const setAttributes = (el, attrs) => {
 
 const toggleClass = (arr, cls) => {
   arr.forEach((element) => {
-    element.classList.toggle(cls);
+    element.classList.toggle(cls);      
   });
 };
 
 const generateInfo = () => {
   const findPlanetInfo = planet_list.find(
-    (element) => element.planetElement == shows
+    (element) => element.planetElement == shows 
   );
+
+
   const contentEl = {
     title: document.querySelector(".content-title"),
     position: document.querySelector(".position"),
@@ -91,12 +100,13 @@ const main = () => {
       planet_list = res;
       res.forEach((element) => {
         if (element.language == language) {
-          const planImg = document.createElement("img");
+          const planImg = document.createElement("model-viewer");
           setAttributes(planImg, {
-            src: `../planets_img/${element.id}.png`,
-            alt: element.id,
-            role: "button",
+            src: `../planets_img/${element.id}.glb`,
+            alt: element.id
           });
+          planImg.setAttribute("auto-rotate", true);
+          // planImg.setAttribute("camera-controls", true);
           planImg.classList.add("planets");
           planImg.classList.add(element.id);
 
