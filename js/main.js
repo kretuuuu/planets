@@ -3,6 +3,7 @@ const mn = document.querySelector(".main");
 const content = document.querySelector(".content");
 
 let planet_list = new Array();
+let language = "ENG";
 let shows;
 
 const setAttributes = (el, attrs) => {
@@ -32,23 +33,42 @@ const generateInfo = () => {
     atmosphere: document.querySelector(".atmosphere"),
     temperature: document.querySelector(".temperature"),
     moons: document.querySelector(".moons"),
-    funFacts: document.querySelector(".fun-facts")
+    funFacts: document.querySelector(".fun-facts"),
   };
 
   contentEl.title.innerHTML = findPlanetInfo.name;
-  contentEl.position.innerHTML = "Position: "+findPlanetInfo.position;
-  contentEl.diameter.innerHTML = "Diameter: "+findPlanetInfo.diameter;
-  contentEl.mass.innerHTML = "Mass: "+findPlanetInfo.mass;
-  contentEl.distSun.innerHTML = "Distance from sun: "+findPlanetInfo.distance_from_sun;
-  contentEl.period.innerHTML = "Orbital period: "+findPlanetInfo.orbital_period;
-  contentEl.dayLen.innerHTML = "Day length: "+findPlanetInfo.day_len;
-  contentEl.atmosphere.innerHTML = "Atmosphere: "+findPlanetInfo.atmosphere;
-  contentEl.temperature.innerHTML = "Temperature: "+findPlanetInfo.temperature;
-  contentEl.moons.innerHTML = "Moons: "+findPlanetInfo.moons;
-  contentEl.funFacts.innerHTML = "Fun facts: "+findPlanetInfo.fun_facts;
+  contentEl.position.innerHTML = "Position: " + findPlanetInfo.position;
+  contentEl.diameter.innerHTML = "Diameter: " + findPlanetInfo.diameter;
+  contentEl.mass.innerHTML = "Mass: " + findPlanetInfo.mass;
+  contentEl.distSun.innerHTML =
+    "Distance from sun: " + findPlanetInfo.distance_from_sun;
+  contentEl.period.innerHTML =
+    "Orbital period: " + findPlanetInfo.orbital_period;
+  contentEl.dayLen.innerHTML = "Day length: " + findPlanetInfo.day_len;
+  contentEl.atmosphere.innerHTML = "Atmosphere: " + findPlanetInfo.atmosphere;
+  contentEl.temperature.innerHTML =
+    "Temperature: " + findPlanetInfo.temperature;
+  contentEl.moons.innerHTML = "Moons: " + findPlanetInfo.moons;
+  contentEl.funFacts.innerHTML = "Fun facts: " + findPlanetInfo.fun_facts;
 
   const infoLines = document.querySelectorAll(".info-line");
-  toggleClass([...infoLines, contentEl.title, contentEl.position, contentEl.diameter, contentEl.mass, contentEl.distSun, contentEl.period, contentEl.dayLen, contentEl.atmosphere, contentEl.temperature, contentEl.moons, contentEl.funFacts], "on-top");
+  toggleClass(
+    [
+      ...infoLines,
+      contentEl.title,
+      contentEl.position,
+      contentEl.diameter,
+      contentEl.mass,
+      contentEl.distSun,
+      contentEl.period,
+      contentEl.dayLen,
+      contentEl.atmosphere,
+      contentEl.temperature,
+      contentEl.moons,
+      contentEl.funFacts,
+    ],
+    "on-top"
+  );
 };
 
 const onTop = function () {
@@ -57,7 +77,7 @@ const onTop = function () {
   toggleClass([this, container, mn, content], "on-top");
   // toggleClass(infoLines, "on-top");
   planet_list.forEach((element) => {
-    if (element.planetElement != shows) {
+    if (element.planetElement != shows && element.language == language) {
       // console.error(element)
       element.planetElement.classList.toggle("hidden");
     }
@@ -65,25 +85,29 @@ const onTop = function () {
 };
 
 const main = () => {
-  fetch("http://localhost/api_planets/")
+  fetch("../data/planets.json")
     .then((res) => res.json())
     .then((res) => {
       planet_list = res;
       res.forEach((element) => {
-        const planImg = document.createElement("img");
-        setAttributes(planImg, {
-          src: `http://localhost/api_planets/img/${element.name}.png`,
-          alt: element.name,
-          role: "button",
-        });
-        planImg.classList.add("planets");
-        planImg.classList.add(element.name);
+        if (element.language == language) {
+          const planImg = document.createElement("img");
+          setAttributes(planImg, {
+            src: `../planets_img/${element.id}.png`,
+            alt: element.id,
+            role: "button",
+          });
+          planImg.classList.add("planets");
+          planImg.classList.add(element.id);
 
-        element.planetElement = planImg;
-        container.appendChild(planImg);
-        planImg.addEventListener("click", onTop);
+          element.planetElement = planImg;
+          container.appendChild(planImg);
+          planImg.addEventListener("click", onTop);
+        } else {
+          return;
+        }
       });
-      console.log(res);
+      console.log(planet_list);
     })
     .catch((error) => console.error("[ERROR] ", error));
 };

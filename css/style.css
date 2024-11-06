@@ -56,7 +56,6 @@
 }
 
 @keyframes text-title {
-
   to {
     letter-spacing: 0;
   }
@@ -68,19 +67,18 @@ html {
 
 body {
   margin: 0;
-  background-color: rgb(59, 56, 56);
+  background-image: url("../img/f.gif");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   overflow-y: hidden;
 }
 
 .main {
   display: flex;
-  background-image: url("../img/f.gif");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   width: max-content;
   min-width: 100%;
-  background-attachment: fixed;
   /* transition: all .3s ease; */
 }
 
@@ -125,8 +123,8 @@ body {
 }
 
 .content-title {
-    letter-spacing: 8px;
-    /* width: 100%; */
+  letter-spacing: 8px;
+  /* width: 100%; */
   opacity: 1;
   color: white;
   text-transform: uppercase;
@@ -161,6 +159,7 @@ body {
 
 .content-details {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   margin: 1.5rem;
@@ -268,4 +267,28 @@ body {
 
 .sun.on-top {
   width: calc(var(--width-sun) * 1.2);
+}
+
+@media screen and (max-width: 992px){
+  body {
+    height: 100%;
+    overflow: auto;
+  }
+  .content-details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .content {
+    height: 100%;
+  }
+  .content.on-top {
+    padding: 1rem;
+  }
+  .container.on-top {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .content-element {
+    width: 100%;
+  }
 }
