@@ -94,7 +94,7 @@ const onTop = function () {
 };
 
 const main = () => {
-  fetch("../data/planets.json")
+  fetch("./data/planets.json")
     .then((res) => res.json())
     .then((res) => {
       planet_list = res;
@@ -102,7 +102,7 @@ const main = () => {
         if (element.language == language) {
           const planImg = document.createElement("model-viewer");
           setAttributes(planImg, {
-            src: `../planets_img/${element.id}.glb`,
+            src: `./planets_img/${element.id}.glb`,
             alt: element.id
           });
           planImg.setAttribute("auto-rotate", true);
