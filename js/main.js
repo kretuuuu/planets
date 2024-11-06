@@ -3,7 +3,7 @@ const mn = document.querySelector(".main");
 const content = document.querySelector(".content");
 
 let planet_list = new Array();
-let language = "ENG";
+let language = "PL";
 let shows;
 
 const setAttributes = (el, attrs) => {
