@@ -82,6 +82,7 @@ const generateInfo = () => {
 
 const onTop = function () {
   shows = this;
+  this.setAttribute("camera-controls", true);
   generateInfo();
   toggleClass([this, container, mn, content], "on-top");
   // toggleClass(infoLines, "on-top");
