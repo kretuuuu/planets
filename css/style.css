@@ -7,7 +7,7 @@
   --width-earth: calc(var(--width-sun) * (8.5 / 34));
   --width-mars: calc(var(--width-sun) * (6 / 34));
   --width-jupiter: calc(var(--width-sun) * (20 / 34));
-  --width-saturn: calc(var(--width-sun) * (17 / 34));
+  --width-saturn: calc(var(--width-sun) * (19 / 34));
   --width-uranus: calc(var(--width-sun) * (12 / 34));
   --width-neptune: calc(var(--width-sun) * (12 / 34));
 }
@@ -61,6 +61,12 @@
   }
 }
 
+@keyframes flash {
+  to {
+
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -84,11 +90,12 @@ model-viewer {
   display: flex;
   width: max-content;
   min-width: 100%;
+  
 }
 
 .main.on-top {
   max-width: 100vw;
-  
+  animation: flash 0.8s 0.8s normal forwards;
 }
 
 .language {
@@ -109,7 +116,7 @@ model-viewer {
 
 .container {
   width: max-content;
-  column-gap: 6rem;
+  column-gap: 5rem;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -234,7 +241,7 @@ model-viewer {
   opacity: 0;
   width: var(--width-planet);
   transition: all 0.5s ease;
-  border-radius: 50%;
+  /* border-radius: 50%; */
   animation: planetsOnLoad 0.5s 0.2s alternate forwards;
 }
 
@@ -287,10 +294,23 @@ model-viewer {
 }
 
 .sun.on-top {
-  width: calc(var(--width-sun) * 1.2);
+  width: calc(var(--width-sun) * 2);
 }
 
 @media screen and (max-width: 992px) {
+  /* :root {
+    --width-planet: 30vw;
+    --width-sun: 15vw;
+  
+    --width-mercury: calc(var(--width-sun) * (5 / 34));
+    --width-venus: calc(var(--width-sun) * (8 / 34));
+    --width-earth: calc(var(--width-sun) * (8.5 / 34));
+    --width-mars: calc(var(--width-sun) * (6 / 34));
+    --width-jupiter: calc(var(--width-sun) * (20 / 34));
+    --width-saturn: calc(var(--width-sun) * (17 / 34));
+    --width-uranus: calc(var(--width-sun) * (12 / 34));
+    --width-neptune: calc(var(--width-sun) * (12 / 34));
+  } */
   body {
     height: 100%;
     overflow: auto;
@@ -305,14 +325,26 @@ model-viewer {
   .content.on-top {
     padding: 1rem;
   }
-  .container.on-top {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .container {
+    flex-direction: column;
+    /* align-items: center; */
+    min-height: var(--width-sun);
+    width: 100%;
+    justify-content: center;
   }
+  .container.on-top {
+    padding-left: 0;
+    padding-right: 0;
+    max-height: var(--width-sun);
+  }
+
   .content-element {
     width: 100%;
   }
   .language {
     display: none;
+  }
+  .main {
+    flex-direction: column;
   }
 }

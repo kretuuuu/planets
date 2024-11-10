@@ -82,7 +82,13 @@ const generateInfo = () => {
 
 const onTop = function () {
   shows = this;
-  this.setAttribute("camera-controls", true);
+  // if (this.hasAttribute("camera-controls"))
+  // {
+  //   this.removeAttribute("camera-controls");
+  // }
+  // else {
+  //   this.setAttribute("camera-controls", true);
+  // }
   generateInfo();
   toggleClass([this, container, mn, content], "on-top");
   // toggleClass(infoLines, "on-top");
@@ -101,9 +107,9 @@ const main = () => {
       planet_list = res;
       res.forEach((element) => {
         if (element.language == language) {
-          const planImg = document.createElement("model-viewer");
+          const planImg = document.createElement("img");
           setAttributes(planImg, {
-            src: `./planets_img/${element.id}.glb`,
+            src: `./planets_img/${element.id}.png`,
             alt: element.id
           });
           planImg.setAttribute("auto-rotate", true);
