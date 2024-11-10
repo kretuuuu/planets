@@ -107,13 +107,17 @@ const main = () => {
       planet_list = res;
       res.forEach((element) => {
         if (element.language == language) {
-          const planImg = document.createElement("img");
+          const planImg = document.createElement("model-viewer");
           setAttributes(planImg, {
-            src: `./planets_img/${element.id}.png`,
-            alt: element.id
+            src: `./planets_img/${element.id}.glb`,
+            alt: element.id,
+            loading: "lazy",
+            poster: "true",
+            'disable-tap': true,
+            'disable-zoom': true
           });
           planImg.setAttribute("auto-rotate", true);
-          // planImg.setAttribute("camera-controls", true);
+          planImg.setAttribute("camera-controls", true);
           planImg.classList.add("planets");
           planImg.classList.add(element.id);
 
