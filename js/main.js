@@ -25,60 +25,60 @@ const toggleClass = (arr, cls) => {
   });
 };
 
-const generateInfo = () => {
-  const findPlanetInfo = planet_list.find(
-    (element) => element.planetElement == shows 
-  );
+// const generateInfo = () => {
+//   const findPlanetInfo = planet_list.find(
+//     (element) => element.planetElement == shows 
+//   );
 
 
-  const contentEl = {
-    title: document.querySelector(".content-title"),
-    position: document.querySelector(".position"),
-    diameter: document.querySelector(".diameter"),
-    mass: document.querySelector(".mass"),
-    distSun: document.querySelector(".dist-sun"),
-    period: document.querySelector(".period"),
-    dayLen: document.querySelector(".day-len"),
-    atmosphere: document.querySelector(".atmosphere"),
-    temperature: document.querySelector(".temperature"),
-    moons: document.querySelector(".moons"),
-    funFacts: document.querySelector(".fun-facts"),
-  };
+//   const contentEl = {
+//     title: document.querySelector(".content-title"),
+//     position: document.querySelector(".position"),
+//     diameter: document.querySelector(".diameter"),
+//     mass: document.querySelector(".mass"),
+//     distSun: document.querySelector(".dist-sun"),
+//     period: document.querySelector(".period"),
+//     dayLen: document.querySelector(".day-len"),
+//     atmosphere: document.querySelector(".atmosphere"),
+//     temperature: document.querySelector(".temperature"),
+//     moons: document.querySelector(".moons"),
+//     funFacts: document.querySelector(".fun-facts"),
+//   };
 
-  contentEl.title.innerHTML = findPlanetInfo.name;
-  contentEl.position.innerHTML = "Position: " + findPlanetInfo.position;
-  contentEl.diameter.innerHTML = "Diameter: " + findPlanetInfo.diameter;
-  contentEl.mass.innerHTML = "Mass: " + findPlanetInfo.mass;
-  contentEl.distSun.innerHTML =
-    "Distance from sun: " + findPlanetInfo.distance_from_sun;
-  contentEl.period.innerHTML =
-    "Orbital period: " + findPlanetInfo.orbital_period;
-  contentEl.dayLen.innerHTML = "Day length: " + findPlanetInfo.day_len;
-  contentEl.atmosphere.innerHTML = "Atmosphere: " + findPlanetInfo.atmosphere;
-  contentEl.temperature.innerHTML =
-    "Temperature: " + findPlanetInfo.temperature;
-  contentEl.moons.innerHTML = "Moons: " + findPlanetInfo.moons;
-  contentEl.funFacts.innerHTML = "Fun facts: " + findPlanetInfo.fun_facts;
+//   contentEl.title.innerHTML = findPlanetInfo.name;
+//   contentEl.position.innerHTML = "Position: " + findPlanetInfo.position;
+//   contentEl.diameter.innerHTML = "Diameter: " + findPlanetInfo.diameter;
+//   contentEl.mass.innerHTML = "Mass: " + findPlanetInfo.mass;
+//   contentEl.distSun.innerHTML =
+//     "Distance from sun: " + findPlanetInfo.distance_from_sun;
+//   contentEl.period.innerHTML =
+//     "Orbital period: " + findPlanetInfo.orbital_period;
+//   contentEl.dayLen.innerHTML = "Day length: " + findPlanetInfo.day_len;
+//   contentEl.atmosphere.innerHTML = "Atmosphere: " + findPlanetInfo.atmosphere;
+//   contentEl.temperature.innerHTML =
+//     "Temperature: " + findPlanetInfo.temperature;
+//   contentEl.moons.innerHTML = "Moons: " + findPlanetInfo.moons;
+//   contentEl.funFacts.innerHTML = "Fun facts: " + findPlanetInfo.fun_facts;
 
-  const infoLines = document.querySelectorAll(".info-line");
-  toggleClass(
-    [
-      ...infoLines,
-      contentEl.title,
-      contentEl.position,
-      contentEl.diameter,
-      contentEl.mass,
-      contentEl.distSun,
-      contentEl.period,
-      contentEl.dayLen,
-      contentEl.atmosphere,
-      contentEl.temperature,
-      contentEl.moons,
-      contentEl.funFacts,
-    ],
-    "on-top"
-  );
-};
+//   const infoLines = document.querySelectorAll(".info-line");
+//   toggleClass(
+//     [
+//       ...infoLines,
+//       contentEl.title,
+//       contentEl.position,
+//       contentEl.diameter,
+//       contentEl.mass,
+//       contentEl.distSun,
+//       contentEl.period,
+//       contentEl.dayLen,
+//       contentEl.atmosphere,
+//       contentEl.temperature,
+//       contentEl.moons,
+//       contentEl.funFacts,
+//     ],
+//     "on-top"
+//   );
+// };
 
 const onTop = function () {
   shows = this;
@@ -89,8 +89,8 @@ const onTop = function () {
   // else {
   //   this.setAttribute("camera-controls", true);
   // }
-  generateInfo();
-  toggleClass([this, container, mn, content], "on-top");
+  // generateInfo();
+  toggleClass([this, container, mn], "on-top");
   // toggleClass(infoLines, "on-top");
   planet_list.forEach((element) => {
     if (element.planetElement != shows && element.language == language) {

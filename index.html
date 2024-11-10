@@ -12,32 +12,63 @@
   </head>
   <body>
     <main class="main">
-      <div class="language">
-        <input type="radio" name="lang" value="PL" class="lang" disabled /> PL
-        <input type="radio" name="lang" value="ENG" class="lang" checked /> ENG
-        <button disabled class="nav-open">nav-bar ( wkrotce )</button>
-        <!-- <div class="nav">testowe</div> -->
-      </div>
-
-      <section class="container"></section>
-      <section class="content">
-        <h1 class="content-title"></h1>
-        <hr class="info-line" />
-        <section class="content-details">
-          <h3 class="position content-element"></h3>
-          <h3 class="diameter content-element"></h3>
-          <h3 class="mass content-element"></h3>
-          <h3 class="dist-sun content-element"></h3>
-          <h3 class="period content-element"></h3>
-          <h3 class="day-len content-element"></h3>
-          <h3 class="atmosphere content-element"></h3>
-          <h3 class="temperature content-element"></h3>
-          <h3 class="moons content-element"></h3>
-          <h3 class="fun-facts content-element"></h3>
-        </section>
-        <hr class="info-line" />
+      <aside class="select-item">
+        <a href="#planet1">planeta1</a>
+        <a href="#planet2">planeta2</a>
+        <a href="#planet3">planeta3</a>
+      </aside>
+      <section class="container">
+        <div class="planets planet1" id="planet1">
+          <!-- <h3>planet1</h3> -->
+          <model-viewer
+          src="./planets_img/sun.glb"
+          alt="3D model"
+          auto-rotate
+          ar
+          poster
+        ></model-viewer>
+        </div>
+        <div class="planets planet2" id="planet2">
+          <!-- <h3>planet2</h3> -->
+          <model-viewer
+          src="./planets_img/mercury.glb"
+          alt="3D model"
+          auto-rotate
+          ar
+        ></model-viewer>
+        </div>
+        <div class="planets planet3" id="planet3">
+          <!-- <h3>planet3</h3> -->
+          <model-viewer
+          src="./planets_img/earth.glb"
+          alt="3D model"
+          auto-rotate
+          ar
+        ></model-viewer>
+        </div>
       </section>
+      <section class="content">
+        content
+      </section>
+      <!-- <div class="planets planet4">
+        <h3>planet4</h3>
+      </div>
+      <div class="planets planet5">
+        <h3>planet5</h3>
+      </div>
+      <div class="planets planet6">
+        <h3>planet6</h3>
+      </div>
+      <div class="planets planet7">
+        <h3>planet7</h3>
+      </div>
+      <div class="planets planet8">
+        <h3>planet8</h3>
+      </div>
+      <div class="planets planet9">
+        <h3>planet9</h3>
+      </div> -->
     </main>
-    <script src="./js/main.js"></script>
+    <!-- <script src="./js/main.js"></script> -->
   </body>
 </html>

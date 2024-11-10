@@ -1,350 +1,62 @@
-:root {
-  --width-planet: 10vw;
-  --width-sun: 15vw;
-
-  --width-mercury: calc(var(--width-sun) * (5 / 34));
-  --width-venus: calc(var(--width-sun) * (8 / 34));
-  --width-earth: calc(var(--width-sun) * (8.5 / 34));
-  --width-mars: calc(var(--width-sun) * (6 / 34));
-  --width-jupiter: calc(var(--width-sun) * (20 / 34));
-  --width-saturn: calc(var(--width-sun) * (19 / 34));
-  --width-uranus: calc(var(--width-sun) * (12 / 34));
-  --width-neptune: calc(var(--width-sun) * (12 / 34));
-}
-
-@keyframes line-right {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes text-show {
-  from {
-    opacity: 0;
-    visibility: none;
-    filter: blur(5px);
-    scale: 1.2;
-  }
-  to {
-    opacity: 1;
-    visibility: visible;
-    filter: blur(0);
-    scale: 1;
-  }
-}
-
-@keyframes planetsOnLoad {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes show-content {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-    backdrop-filter: blur(3px);
-  }
-}
-
-@keyframes text-title {
-  to {
-    letter-spacing: 0;
-  }
-}
-
-@keyframes flash {
-  to {
-
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
-  background-image: url("../img/f.gif");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background-color: rgb(43, 41, 41);
   overflow: hidden;
 }
 
 model-viewer {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
 }
 
 .main {
-  display: flex;
-  width: max-content;
-  min-width: 100%;
-  
-}
-
-.main.on-top {
-  max-width: 100vw;
-  animation: flash 0.8s 0.8s normal forwards;
-}
-
-.language {
-  position: absolute;
-  color: white;
-  font-size: 1rem;
-}
-
-.nav-open {
-  color: white;
-}
-
-/* .nav {
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.746);
-  height: 100%;
-} */
-
-.container {
-  width: max-content;
-  column-gap: 5rem;
-  height: 100vh;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  transition: all 0.5s ease-out;
+  height: 100vh;
+  padding: 2rem;
 }
 
-.container.on-top {
-  padding-left: 4rem;
-  padding-right: 4rem;
-  column-gap: 0;
+.container {
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.select-item {
+  /* top: 50%;
+  left: 0;
+  position: fixed; */
+  height: 300px;
+  background-color: bisque;
+  width: 10%;
 }
 
 .content {
-  overflow: hidden;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-wrap: nowrap;
-  padding: 3rem;
-  display: none;
-  transition: display 0s ease-out 1s;
-  opacity: 0;
+  background-color: rgb(55, 72, 66);
+  width: 20%;
+  height: 100%;
 }
-
-.content.on-top {
-  display: flex;
-  animation: show-content 0.8s 0.8s normal forwards;
-}
-
-.content-title {
-  letter-spacing: 8px;
-  /* width: 100%; */
-  opacity: 1;
-  color: white;
-  text-transform: uppercase;
-}
-
-.content-title.on-top {
-  animation: text-title 1s 1s alternate forwards;
-}
-
-.content-element {
-  width: 40%;
-  user-select: none;
-  visibility: hidden;
-  color: white;
-  text-wrap: wrap;
-  text-align: center;
-  filter: brightness(60%);
-  transition: all 0.3s ease;
-}
-
-.content-element:hover {
-  /* text-decoration: underline; */
-  filter: brightness(100%);
-}
-
-.content-element.on-top {
-  animation-name: text-show;
-  animation-duration: 1s;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-}
-
-.content-details {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 1.5rem;
-}
-
-.info-line {
-  height: 1px;
-  background-image: linear-gradient(
-    to left,
-    rgba(255, 255, 255, 0.986),
-    rgba(253, 253, 253, 0.535),
-    rgba(0, 0, 0, 0)
-  );
-  border: 0;
-}
-
-.info-line.on-top {
-  animation: line-right 0.8s 1.2s normal forwards;
-}
-
-/* DELAY ANIMACJI NAPISOW */
-
-.position,
-.diameter {
-  animation-delay: 1.3s;
-}
-
-.mass,
-.dist-sun {
-  animation-delay: 1.6s;
-}
-
-.period,
-.day-len {
-  animation-delay: 1.9s;
-}
-
-.atmosphere,
-.temperature {
-  animation-delay: 2.2s;
-}
-
-.moons,
-.fun-facts {
-  animation-delay: 2.5s;
-}
-
-/* PLANETY KLASY */
 
 .planets {
-  opacity: 0;
-  width: var(--width-planet);
-  transition: all 0.5s ease;
-  /* border-radius: 50%; */
-  animation: planetsOnLoad 0.5s 0.2s alternate forwards;
+  /* scroll-padding-top: 10px; */
+  /* position: sticky; */
+  height: 400px;
+  width: 100%;
+  /* top: 0; */
 }
 
-.planets.on-top {
-  width: calc(var(--width-planet) * 3);
+.planet1 {
+  background-color: aquamarine;
 }
 
-.planets.hidden {
-  width: 0;
-  opacity: 0;
-  pointer-events: none;
+.planet2 {
+  background-color: blue;
 }
 
-/* SZEROKOSCI PLANET */
-
-.mercury {
-  width: var(--width-mercury);
-}
-
-.venus {
-  width: var(--width-venus);
-}
-
-.earth {
-  width: var(--width-earth);
-}
-
-.mars {
-  width: var(--width-mars);
-}
-
-.jupiter {
-  width: var(--width-jupiter);
-}
-
-.saturn {
-  width: var(--width-saturn);
-}
-
-.uranus {
-  width: var(--width-uranus);
-}
-
-.neptune {
-  width: var(--width-neptune);
-}
-
-.sun {
-  width: var(--width-sun);
-}
-
-.sun.on-top {
-  width: calc(var(--width-sun) * 2);
-}
-
-@media screen and (max-width: 992px) {
-  /* :root {
-    --width-planet: 30vw;
-    --width-sun: 15vw;
-  
-    --width-mercury: calc(var(--width-sun) * (5 / 34));
-    --width-venus: calc(var(--width-sun) * (8 / 34));
-    --width-earth: calc(var(--width-sun) * (8.5 / 34));
-    --width-mars: calc(var(--width-sun) * (6 / 34));
-    --width-jupiter: calc(var(--width-sun) * (20 / 34));
-    --width-saturn: calc(var(--width-sun) * (17 / 34));
-    --width-uranus: calc(var(--width-sun) * (12 / 34));
-    --width-neptune: calc(var(--width-sun) * (12 / 34));
-  } */
-  body {
-    height: 100%;
-    overflow: auto;
-  }
-  .content-details {
-    flex-direction: column;
-    align-items: center;
-  }
-  .content {
-    height: 100%;
-  }
-  .content.on-top {
-    padding: 1rem;
-  }
-  .container {
-    flex-direction: column;
-    /* align-items: center; */
-    min-height: var(--width-sun);
-    width: 100%;
-    justify-content: center;
-  }
-  .container.on-top {
-    padding-left: 0;
-    padding-right: 0;
-    max-height: var(--width-sun);
-  }
-
-  .content-element {
-    width: 100%;
-  }
-  .language {
-    display: none;
-  }
-  .main {
-    flex-direction: column;
-  }
+.planet3 {
+  background-color: blueviolet;
 }
