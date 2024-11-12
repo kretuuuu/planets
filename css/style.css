@@ -103,6 +103,7 @@ model-viewer {
   position: absolute;
   color: white;
   font-size: 1rem;
+  z-index: 1;
 }
 
 .nav-open {
@@ -318,8 +319,6 @@ model-viewer {
   .content {
     height: 100%;
   }
-  .content.on-top {
-    padding: 1rem;
   /* }
   .container {
     flex-direction: column;
