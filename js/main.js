@@ -62,8 +62,8 @@ const contentEl = {
 
 close.addEventListener("click", function () {
   contentEl.showHide();
-  shows.classList.toggle("on-top");
   shows.removeAttribute("camera-controls");
+  shows.addEventListener("click", onTop);
 });
 
 const setAttributes = (el, attrs) => {
@@ -102,14 +102,13 @@ const generateInfo = () => {
 
 const onTop = function () {
   shows = this;
-  if (this.hasAttribute("camera-controls")) {
-    this.removeAttribute("camera-controls");
+  if (shows.hasAttribute("camera-controls")) {
+    shows.removeAttribute("camera-controls");
   } else {
-    this.setAttribute("camera-controls", true);
+    shows.setAttribute("camera-controls", true);
   }
   generateInfo();
-  // toggleClass([this, container, mn], "on-top");
-  // toggleClass(infoLines, "on-top");
+  this.removeEventListener("click", onTop);
 };
 
 const main = () => {
@@ -128,6 +127,7 @@ const main = () => {
             "disable-tap": true,
             "disable-zoom": true,
             "disable-pan": true,
+            "auto-rotate": true,
           });
           planImg.classList.add("planets");
           planImg.classList.add(element.id);

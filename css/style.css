@@ -73,11 +73,12 @@ html {
 
 body {
   margin: 0;
-  background-image: url("../img/f.gif");
+  background-image: url("../img/f.webp");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -90,7 +91,7 @@ model-viewer {
   display: flex;
   width: max-content;
   min-width: 100%;
-  
+  overflow-x: auto;
 }
 
 .main.on-top {
@@ -249,7 +250,6 @@ model-viewer {
   opacity: 0;
   width: var(--width-planet);
   transition: all 0.5s ease;
-  /* border-radius: 50%; */
   animation: planetsOnLoad 0.5s 0.2s alternate forwards;
 }
 
@@ -261,6 +261,11 @@ model-viewer {
   width: 0;
   opacity: 0;
   pointer-events: none;
+  /* display: none; */
+}
+
+.planets.display-none {
+  display: none;
 }
 
 /* SZEROKOSCI PLANET */
@@ -306,23 +311,6 @@ model-viewer {
 }
 
 @media screen and (max-width: 992px) {
-  /* :root {
-    --width-planet: 30vw;
-    --width-sun: 15vw;
-  
-    --width-mercury: calc(var(--width-sun) * (5 / 34));
-    --width-venus: calc(var(--width-sun) * (8 / 34));
-    --width-earth: calc(var(--width-sun) * (8.5 / 34));
-    --width-mars: calc(var(--width-sun) * (6 / 34));
-    --width-jupiter: calc(var(--width-sun) * (20 / 34));
-    --width-saturn: calc(var(--width-sun) * (17 / 34));
-    --width-uranus: calc(var(--width-sun) * (12 / 34));
-    --width-neptune: calc(var(--width-sun) * (12 / 34));
-  } */
-  body {
-    height: 100%;
-    overflow: auto;
-  }
   .content-details {
     flex-direction: column;
     align-items: center;
@@ -332,18 +320,15 @@ model-viewer {
   }
   .content.on-top {
     padding: 1rem;
-  }
+  /* }
   .container {
     flex-direction: column;
-    /* align-items: center; */
-    min-height: var(--width-sun);
     width: 100%;
     justify-content: center;
   }
   .container.on-top {
     padding-left: 0;
     padding-right: 0;
-    max-height: var(--width-sun);
   }
 
   .content-element {
@@ -355,4 +340,10 @@ model-viewer {
   .main {
     flex-direction: column;
   }
+
+  .planets.on-top {
+    position: absolute;
+    width: 80%;
+    height: 50%;
+  } */
 }
