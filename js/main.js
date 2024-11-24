@@ -9,6 +9,11 @@ const settings = document.querySelector(".settings");
 const navButton = document.querySelectorAll(".nav-button");
 const perf = document.querySelector(".perf");
 
+document.addEventListener("mousedown", function start(){
+  document.removeEventListener("click", start);
+  document.querySelector(".start").style.display = "none";
+})
+
 navButton.forEach((element) => {
   element.addEventListener("click", function () {
     this.classList.toggle("active");
@@ -200,3 +205,4 @@ function replace()
 }
 
 main();
+
