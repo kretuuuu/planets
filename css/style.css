@@ -111,10 +111,9 @@ model-viewer {
   display: none;
   color: white;
   font-size: 1rem;
-  /* background-color: aquamarine; */
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .settings.on-top {
@@ -334,39 +333,19 @@ model-viewer {
 }
 
 @media screen and (max-width: 992px) {
-  .content-details {
+  body {
+    background: black;
+  }
+
+  .container {
+    /* margin: 3rem; */
     flex-direction: column;
+    /* justify-content: center; */
+    width: 100%;
     align-items: center;
   }
-  .content {
-    height: 100%;
-  }
-  /* .content.on-top {
-    padding: 1rem; */
-  /* }
-  .container {
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-  }
-  .container.on-top {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .content-element {
+  .navbar {
     width: 100%;
   }
-  .settings {
-    display: none;
-  }
-  .main {
-    flex-direction: column;
-  }
 
-  .planets.on-top {
-    position: absolute;
-    width: 80%;
-    height: 50%;
-  } */
 }

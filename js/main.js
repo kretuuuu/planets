@@ -16,7 +16,7 @@ navButton.forEach((element) => {
 });
 
 let planet_list = new Array();
-let language = "ENG";
+let language = "PL";
 let shows;
 let ifperf = false;
 
@@ -112,14 +112,15 @@ const generateInfo = () => {
 
 const onTop = function () {
   shows = this;
-  if (shows.hasAttribute("camera-controls")) {
-    shows.removeAttribute("camera-controls");
-  } else {
-    shows.setAttribute("camera-controls", true);
-  }
+    if (shows.hasAttribute("camera-controls") && shows.tagName == "model-viewer") {
+      shows.removeAttribute("camera-controls");
+    } else {
+      shows.setAttribute("camera-controls", true);
+    }
   generateInfo();
   contentEl.showHide();
   this.removeEventListener("click", onTop);
+  shows.addEventListener("transitionend", replace);
 };
 
 document.querySelectorAll(".lang").forEach((element) => {
@@ -180,5 +181,22 @@ const main = () => {
     })
     .catch((error) => console.error("[ERROR] ", error));
 };
+
+function replace()
+{
+  // const replacedItem = document.createElement("model-viewer");
+  // setAttributes(replacedItem, {
+  //   src: `./planets_img/${shows.getAttribute("src")}.glb`,
+  //   alt: shows.src,
+  //   loading: "eager",
+  //   poster: "../planets_poster/" + shows.getAttribute("src") + ".webp",
+  //   "disable-tap": true,
+  //   "disable-zoom": true,
+  //   "disable-pan": true,
+  //   "auto-rotate": true,
+  // });
+  // shows = replacedItem;
+  console.info("wkrotce");
+}
 
 main();
