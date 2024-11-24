@@ -79,7 +79,8 @@ body {
 
 model-viewer {
   width: 100%;
-  height: 100%;
+  height: 50%;
+
 }
 
 .main {
@@ -128,8 +129,6 @@ model-viewer {
   background: none;
   cursor: pointer;
 }
-
-
 
 .active {
   border-bottom: 0.1rem solid whitesmoke;
@@ -184,7 +183,6 @@ model-viewer {
 
 .content-title {
   letter-spacing: 8px;
-  /* width: 100%; */
   opacity: 1;
   color: white;
   text-transform: uppercase;
@@ -269,8 +267,8 @@ model-viewer {
 
 /* PLANETY KLASY */
 
+
 .planets {
-  height: 50%;
   border-radius: 50%;
   opacity: 0;
   width: var(--width-planet);

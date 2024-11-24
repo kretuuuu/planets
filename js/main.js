@@ -7,7 +7,7 @@ const close = document.querySelector(".close-icon");
 const menuToggle = document.querySelector(".menu-icon");
 const settings = document.querySelector(".settings");
 const navButton = document.querySelectorAll(".nav-button");
-const performance = document.querySelector(".performance");
+const perf = document.querySelector(".perf");
 
 navButton.forEach((element) => {
   element.addEventListener("click", function () {
@@ -18,7 +18,7 @@ navButton.forEach((element) => {
 let planet_list = new Array();
 let language = "ENG";
 let shows;
-let ifPerformance = false;
+let ifperf = false;
 
 const contentEl = {
   title: document.querySelector(".content-title"),
@@ -33,6 +33,11 @@ const contentEl = {
   moons: document.querySelector(".moons"),
   funFacts: document.querySelector(".fun-facts"),
   infoLines: document.querySelectorAll(".info-line"),
+
+  reset() {
+    document.querySelectorAll(".planets").forEach((el) => el.remove());
+    main();
+  },
 
   showHide() {
     planet_list.forEach((element) => {
@@ -117,7 +122,7 @@ const onTop = function () {
   this.removeEventListener("click", onTop);
 };
 
-document.querySelectorAll(".lang").forEach((element) => {                      
+document.querySelectorAll(".lang").forEach((element) => {
   element.addEventListener("click", function changeLang() {
     if (language == this.value) {
       return;
@@ -126,14 +131,14 @@ document.querySelectorAll(".lang").forEach((element) => {
     language = this.value;
     this.classList.add("active");
     console.log("Nowy język:", language);
-    document.querySelectorAll(".planets").forEach((el) => el.remove());
-    main();
+    contentEl.reset();
   });
 });
 
-performance.addEventListener("click", () => {
-  ifPerformance = !ifPerformance;
-})
+perf.addEventListener("click", () => {
+  ifperf = !ifperf;
+  contentEl.reset();
+});
 
 const main = () => {
   fetch("./data/planets.json")
@@ -142,21 +147,25 @@ const main = () => {
       planet_list = res;
       res.forEach((element) => {
         if (element.language == language) {
-          if (!ifPerformance)
-          {
-
+          const planImg = ifperf ? document.createElement("img") : document.createElement("model-viewer");
+          if (!ifperf) {
+            setAttributes(planImg, {
+              src: `./planets_img/${element.id}.glb`,
+              alt: element.id,
+              loading: "eager",
+              poster: "../planets_poster/" + element.id + ".webp",
+              "disable-tap": true,
+              "disable-zoom": true,
+              "disable-pan": true,
+              "auto-rotate": true,
+            });
+          } else {
+            setAttributes(planImg, {
+              src: `./planets_poster/${element.id}.webp`,
+              alt: element.id
+            })
           }
-          const planImg = document.createElement("model-viewer");
-          setAttributes(planImg, {
-            src: `./planets_img/${element.id}.glb`,
-            alt: element.id,
-            loading: "eager",
-            poster: "../planets_poster/" + element.id + ".webp",
-            "disable-tap": true,
-            "disable-zoom": true,
-            "disable-pan": true,
-            "auto-rotate": true,
-          });
+
           planImg.classList.add("planets");
           planImg.classList.add(element.id);
 
