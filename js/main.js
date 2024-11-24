@@ -1,12 +1,24 @@
 const container = document.querySelector(".container");
 const mn = document.querySelector(".main");
 const content = document.querySelector(".content");
+const navbar = document.querySelector(".navbar");
 const radioLangs = document.querySelectorAll(".lang");
 const close = document.querySelector(".close-icon");
+const menuToggle = document.querySelector(".menu-icon");
+const settings = document.querySelector(".settings");
+const navButton = document.querySelectorAll(".nav-button");
+const performance = document.querySelector(".performance");
+
+navButton.forEach((element) => {
+  element.addEventListener("click", function () {
+    this.classList.toggle("active");
+  });
+});
 
 let planet_list = new Array();
 let language = "ENG";
 let shows;
+let ifPerformance = false;
 
 const contentEl = {
   title: document.querySelector(".content-title"),
@@ -47,18 +59,16 @@ const contentEl = {
         shows,
         container,
         mn,
+        navbar,
       ],
       "on-top"
     );
   },
 };
 
-// radioLangs.forEach((element) => {
-//   element.addEventListener("click", function changeLang() {
-//     language = "ENG";
-//     generateInfo();
-//   });
-// });
+menuToggle.addEventListener("click", function () {
+  settings.classList.toggle("on-top");
+});
 
 close.addEventListener("click", function () {
   contentEl.showHide();
@@ -83,21 +93,16 @@ const generateInfo = () => {
     (element) => element.planetElement == shows
   );
   contentEl.title.innerHTML = findPlanetInfo.name;
-  contentEl.position.innerHTML = "Position: " + findPlanetInfo.position;
-  contentEl.diameter.innerHTML = "Diameter: " + findPlanetInfo.diameter;
-  contentEl.mass.innerHTML = "Mass: " + findPlanetInfo.mass;
-  contentEl.distSun.innerHTML =
-    "Distance from sun: " + findPlanetInfo.distance_from_sun;
-  contentEl.period.innerHTML =
-    "Orbital period: " + findPlanetInfo.orbital_period;
-  contentEl.dayLen.innerHTML = "Day length: " + findPlanetInfo.day_len;
-  contentEl.atmosphere.innerHTML = "Atmosphere: " + findPlanetInfo.atmosphere;
-  contentEl.temperature.innerHTML =
-    "Temperature: " + findPlanetInfo.temperature;
-  contentEl.moons.innerHTML = "Moons: " + findPlanetInfo.moons;
-  contentEl.funFacts.innerHTML = "Fun facts: " + findPlanetInfo.fun_facts;
-
-  contentEl.showHide();
+  contentEl.position.innerHTML = findPlanetInfo.position;
+  contentEl.diameter.innerHTML = findPlanetInfo.diameter;
+  contentEl.mass.innerHTML = findPlanetInfo.mass;
+  contentEl.distSun.innerHTML = findPlanetInfo.distance_from_sun;
+  contentEl.period.innerHTML = findPlanetInfo.orbital_period;
+  contentEl.dayLen.innerHTML = findPlanetInfo.day_len;
+  contentEl.atmosphere.innerHTML = findPlanetInfo.atmosphere;
+  contentEl.temperature.innerHTML = findPlanetInfo.temperature;
+  contentEl.moons.innerHTML = findPlanetInfo.moons;
+  contentEl.funFacts.innerHTML = findPlanetInfo.fun_facts;
 };
 
 const onTop = function () {
@@ -108,8 +113,27 @@ const onTop = function () {
     shows.setAttribute("camera-controls", true);
   }
   generateInfo();
+  contentEl.showHide();
   this.removeEventListener("click", onTop);
 };
+
+document.querySelectorAll(".lang").forEach((element) => {                      
+  element.addEventListener("click", function changeLang() {
+    if (language == this.value) {
+      return;
+    }
+    document.querySelectorAll(".lang").forEach((el) => el.classList.remove("active"));
+    language = this.value;
+    this.classList.add("active");
+    console.log("Nowy język:", language);
+    document.querySelectorAll(".planets").forEach((el) => el.remove());
+    main();
+  });
+});
+
+performance.addEventListener("click", () => {
+  ifPerformance = !ifPerformance;
+})
 
 const main = () => {
   fetch("./data/planets.json")
@@ -118,6 +142,10 @@ const main = () => {
       planet_list = res;
       res.forEach((element) => {
         if (element.language == language) {
+          if (!ifPerformance)
+          {
+
+          }
           const planImg = document.createElement("model-viewer");
           setAttributes(planImg, {
             src: `./planets_img/${element.id}.glb`,

@@ -61,11 +61,6 @@
   }
 }
 
-@keyframes flash {
-  to {
-
-  }
-}
 
 html {
   scroll-behavior: smooth;
@@ -99,21 +94,46 @@ model-viewer {
   animation: flash 0.8s 0.8s normal forwards;
 }
 
-.language {
+.navbar {
   position: absolute;
+  width: 30%;
+  left: 0;
+  top: 0;
+  display: flex;
+}
+
+.navbar.on-top {
+  display: none;
+}
+
+.settings {
+  display: none;
   color: white;
   font-size: 1rem;
-}
-
-.nav-open {
-  color: white;
-}
-
-/* .nav {
+  /* background-color: aquamarine; */
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.746);
-  height: 100%;
-} */
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings.on-top {
+  display: flex;
+}
+
+.nav-button, .lang {
+  color: white;
+  padding: 0.5rem;
+  padding-top: 0.6rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+
+
+.active {
+  border-bottom: 0.1rem solid whitesmoke;
+}
 
 .container {
   width: max-content;
@@ -151,12 +171,15 @@ model-viewer {
   animation: show-content 0.8s 0.8s normal forwards;
 }
 
+.icon {
+  margin: 1.5rem;
+  cursor: pointer;
+}
+
 .close-icon {
   position: absolute;
   left: 0;
   top: 0;
-  margin: 1.5rem;
-  cursor: pointer;
 }
 
 .content-title {
@@ -247,6 +270,8 @@ model-viewer {
 /* PLANETY KLASY */
 
 .planets {
+  height: 50%;
+  border-radius: 50%;
   opacity: 0;
   width: var(--width-planet);
   transition: all 0.5s ease;
@@ -318,8 +343,8 @@ model-viewer {
   .content {
     height: 100%;
   }
-  .content.on-top {
-    padding: 1rem;
+  /* .content.on-top {
+    padding: 1rem; */
   /* }
   .container {
     flex-direction: column;
@@ -334,7 +359,7 @@ model-viewer {
   .content-element {
     width: 100%;
   }
-  .language {
+  .settings {
     display: none;
   }
   .main {

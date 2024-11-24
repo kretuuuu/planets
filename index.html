@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Poznaj planety!</title>
+    <title>| Poznaj planety!</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./svg/rocket.svg" type="image/x-icon">
     <!-- <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
@@ -13,16 +14,30 @@
   </head>
   <body>
     <main class="main">
-      <div class="language">
-        <input type="radio" name="lang" value="PL" class="lang" disabled /> PL
-        <input type="radio" name="lang" value="ENG" class="lang" checked /> ENG
-        <button disabled class="nav-open">nav-bar ( wkrotce )</button> <a href="https://github.com/kretuuuu/" target="_blank" style="text-decoration: none; color: white;">author</a>
-        <!-- <div class="nav">testowe</div> -->
-      </div>
+      <nav class="navbar">
+        <img src="./svg/menu.svg" alt="menu" class="menu-icon icon">
+        <div class="settings">
+          <div class="language">
+            <button class="lang" value="PL">POL</button>
+            <button class="lang active" value="ENG">ENG</button>
+          </div>
+          <button class="performance nav-button">
+            Tryb wydajności
+          </button>
+          <!-- <a
+            href="https://github.com/kretuuuu/"
+            target="_blank"
+            style="text-decoration: none; color: white"
+            >author</a
+          > -->
+          <!-- <div class="nav">testowe</div> -->
+        </div>
+      </nav>
+
 
       <section class="container"></section>
       <section class="content">
-        <img src="./svg/darrow.svg" alt="close_icon" class="close-icon" />
+        <img src="./svg/darrow.svg" alt="close_icon" class="close-icon icon" />
         <h1 class="content-title"></h1>
         <hr class="info-line" />
         <section class="content-details">
