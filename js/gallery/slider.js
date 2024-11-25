@@ -1,17 +1,18 @@
 const slider_section = document.querySelectorAll(".random-slider");
 const testuj = document.querySelector(".test");
-const carouselInner = document.querySelector(".carousel-inner");
 
-const zdjecia = () => {
-  console.log(images());
+const sliderGenerator = async () => {
+  await images().forEach(element => {
+    const 
+  });
 };
-testuj.addEventListener("click", zdjecia);
+testuj.addEventListener("click", sliderGenerator);
 
 const images = function () {
   return fetch(`https://images-api.nasa.gov/search?q=mars&media_type=image`)
     .then((res) => res.json())
     .then((res) => {
-      return res.collection.items[1].links[0].href;
+      return res.collection.items;
     })
     .catch((error) => console.error("[ERROR] ", error));
 };

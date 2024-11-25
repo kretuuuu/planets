@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    background-image: url("../../img/f.webp");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* background-color: black; */
+    /* background-image: linear-gradient(to bottom, rgb(10, 3, 19), rgb(62, 8, 134), rgb(10, 3, 19)); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    width: 40%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5%;
+    box-shadow: 0 0 12px 8px rgba(0, 0, 0, 0.547);
+    background-color: rgba(0, 0, 0, 0.774);
+}
+
+.controls {
+    width: 3rem;
+    margin: 1rem;
+    cursor: pointer;
+    filter: brightness(70%);
+    transition: filter .3s ease-in-out;
+}
+
+.controls:hover {
+    filter: brightness(100%);
+
+}
