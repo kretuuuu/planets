@@ -97,18 +97,47 @@ model-viewer {
 }
 
 .autor_logo {
+  position: relative;
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: white;
+  filter: brightness(70%);
+  transition: filter .4s ease;
+}
+
+.autor_logo:hover {
+  filter: brightness(100%);
 }
 
 .autor_logo > img {
   border-radius: 50%;
   height: 2.5rem;
-  transition: scale 0.3s ease-in-out;
+  /* transition: scale 0.3s ease-in-out; */
 }
 
-.autor_logo > img:hover {
+/* .autor_logo > img:hover {
   scale: 1.2;
+} */
+
+.autor_logo::after {
+  position: absolute;
+  left: 3.5rem;
+  content: '- kretuuuu';
+  width: 0;
+  display: inline-block;
+  overflow: hidden;
+  transition: all .4s ease;
+  text-wrap: nowrap;
+}
+
+.autor_logo:hover::after {
+  width: 5rem;
+}
+
+.autor_text {
+  /* width: 0; */
+  display: none;
 }
 
 .flags {
