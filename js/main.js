@@ -147,6 +147,8 @@ perf.addEventListener("click", () => {
 });
 
 const main = () => {
+  planet_list = [];
+  container.innerHTML = "";
   fetch("./data/planets.json")
     .then((res) => res.json())
     .then((res) => {
