@@ -164,11 +164,13 @@ const main = () => {
               "disable-zoom": true,
               "disable-pan": true,
               "auto-rotate": true,
+              id: element.id
             });
           } else {
             setAttributes(planImg, {
               src: `./planets_poster/${element.id}.webp`,
-              alt: element.id
+              alt: element.id,
+              id: element.id
             })
           }
 

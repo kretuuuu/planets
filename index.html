@@ -14,32 +14,41 @@
   </head>
   <body>
     <div class="start">
-      <h1>Uwaga! Strona jest wymagająca i można doświadczyć braku płynności, by temu zaradzić wprowadzono tryb wydajności!</h1>
+      <h1>
+        Uwaga! Jeśli doświadczasz dużego braku płynności, włącz
+        <b><img src="./svg/performance.svg" alt="performance"></b> w ustawieniach strony
+      </h1>
     </div>
     <main class="main">
       <nav class="navbar">
         <img src="./svg/menu.svg" alt="menu" class="menu-icon icon" />
         <div class="settings">
-          <div class="language">
-            <button class="lang active" value="PL">POL</button>
-            <button class="lang" value="ENG">ENG</button>
-          </div>
           <button class="perf nav-button">
-            Tryb wydajności
+            <img src="./svg/performance.svg" alt="performance" class="" />
           </button>
-          <a href="./gallery/"><button disabled class="nav-button" style="color: gray;">Gallery</button></a>
+          <div class="language">
+            <button class="lang active" value="PL">
+              <img src="./svg/pl.svg" alt="pl_flag" class="flags" />
+            </button>
+            <button class="lang" value="ENG">
+              <img src="./svg/gb.svg" alt="gb_flag" class="flags" />
+            </button>
+          </div>
+
           <a
             href="https://github.com/kretuuuu/"
             target="_blank"
-            style="text-decoration: none; color: white"
-            >author</a
-          >
+            class="autor_logo"
+            ><img
+              src="https://avatars.githubusercontent.com/u/149425796?v=4"
+              alt="avatar_autor"
+          /></a>
         </div>
       </nav>
 
       <section class="container"></section>
       <section class="content">
-        <img src="./svg/darrow.svg" alt="close_icon" class="close-icon icon" />
+        <img src="./svg/close.svg" alt="close_icon" class="close-icon icon" />
         <h1 class="content-title"></h1>
         <hr class="info-line" />
         <section class="content-details">
