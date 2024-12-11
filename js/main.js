@@ -186,27 +186,10 @@ const main = () => {
           return;
         }
       });
-      console.log(planet_list);
+
     })
     .catch((error) => console.error("[ERROR] ", error));
 };
-
-function replace()
-{
-  // const replacedItem = document.createElement("model-viewer");
-  // setAttributes(replacedItem, {
-  //   src: `./planets_img/${shows.getAttribute("src")}.glb`,
-  //   alt: shows.src,
-  //   loading: "eager",
-  //   poster: "../planets_poster/" + shows.getAttribute("src") + ".webp",
-  //   "disable-tap": true,
-  //   "disable-zoom": true,
-  //   "disable-pan": true,
-  //   "auto-rotate": true,
-  // });
-  // shows = replacedItem;
-  console.info("wkrotce");
-}
 
 main();
 
